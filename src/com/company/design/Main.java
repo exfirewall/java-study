@@ -2,6 +2,7 @@ package com.company.design;
 
 import com.company.design.adapter.*;
 import com.company.design.aop.AopBrowser;
+import com.company.design.decorator.*;
 import com.company.design.proxy.Browser;
 import com.company.design.proxy.BrowserProxy;
 import com.company.design.proxy.iBrowser;
@@ -45,25 +46,38 @@ public class Main {
 //        browser2.show();
 //        browser2.show();
 
-        AtomicLong start = new AtomicLong();
-        AtomicLong end = new AtomicLong();
+//        AtomicLong start = new AtomicLong();
+//        AtomicLong end = new AtomicLong();
+//
+//        iBrowser aopBrowser = new AopBrowser("www.naver.com",
+//                ()->{
+//                    System.out.println("before");
+//                    start.set(System.currentTimeMillis());
+//                },
+//                ()->{
+//                    long now = System.currentTimeMillis();
+//                    end.set(now - start.get());
+//                }
+//                );
+//
+//        aopBrowser.show();
+//        System.out.println("loading time : " + end.get());
+//
+//        aopBrowser.show();
+//        System.out.println("loading time : " + end.get());
 
-        iBrowser aopBrowser = new AopBrowser("www.naver.com",
-                ()->{
-                    System.out.println("before");
-                    start.set(System.currentTimeMillis());
-                },
-                ()->{
-                    long now = System.currentTimeMillis();
-                    end.set(now - start.get());
-                }
-                );
+        Icar audi = new Audi(1000);
+        audi.showPrice();
 
-        aopBrowser.show();
-        System.out.println("loading time : " + end.get());
-
-        aopBrowser.show();
-        System.out.println("loading time : " + end.get());
+        // a3
+        Icar audi3 = new A3(audi, "A3");
+        audi3.showPrice();
+        // a4
+        Icar audi4 = new A4(audi, "A4");
+        audi4.showPrice();
+        // a5
+        Icar audi5 = new A5(audi, "A5");
+        audi5.showPrice();
     }
 
     //콘센트
